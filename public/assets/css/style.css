@@ -2265,3 +2265,68 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .profit__invest-main { animation: none; }
 }
+
+/* ============================================================
+   CTA帯：全体を大きく／ボタンをゴールドの輝きに
+   ============================================================ */
+/* 中身を大きくしても切れないよう、固定比率から最小高さに変更
+   （背景は 100% auto のままなので、余った上下は画像と同じ地色で埋まる） */
+.cta {
+  aspect-ratio: auto;
+  min-height: 31.3vw;          /* 2160:678 と同じ比率 */
+}
+.cta--final { min-height: 0; }
+
+.cta__head { font-size: clamp(20px, 3vw, 46px); margin-bottom: clamp(20px, 2.4vw, 32px); }
+.cta__docs { width: min(420px, 34vw); }
+.cta__body { gap: clamp(20px, 4vw, 64px); }
+
+/* ボタン：ゴールドのグラデーション＋輝きを流し続ける */
+.cta .btn--lg {
+  max-width: 540px;
+  font-size: clamp(17px, 1.9vw, 27px);
+  padding: 1.15em 2.6em 1.15em 1.8em;
+  color: #7a2609;
+  border-color: rgba(122, 38, 9, .28);
+  background-color: #e8d49a;
+  background-image: linear-gradient(100deg,
+    #b8974e 0%, #d8c489 16%, #fff6d9 32%, #f7ead0 44%,
+    #e0cd96 60%, #b8974e 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  box-shadow:
+    0 7px 0 #8f7434,
+    0 18px 30px rgba(0, 0, 0, .34),
+    inset 0 1px 0 rgba(255, 255, 255, .8);
+  animation: gold-shine 4s linear infinite, cta-glow 3.4s ease-in-out infinite;
+}
+.cta .btn--lg:hover {
+  box-shadow:
+    0 10px 0 #8f7434,
+    0 24px 40px rgba(0, 0, 0, .38),
+    inset 0 1px 0 rgba(255, 255, 255, .85);
+}
+.cta .btn--lg:active {
+  box-shadow:
+    0 1px 0 #8f7434,
+    0 5px 12px rgba(0, 0, 0, .3),
+    inset 0 2px 7px rgba(0, 0, 0, .2);
+}
+.cta .btn--lg::before { display: none; }   /* 白い光沢はグラデーションと干渉するため停止 */
+
+.cta__note { font-size: clamp(11px, 1.15vw, 15px); }
+
+@media (max-width: 768px) {
+  .cta { min-height: 0; }
+  .cta__head { font-size: 22px; }
+  .cta__docs { width: min(340px, 86vw); }
+  .cta .btn--lg {
+    max-width: 100%;
+    font-size: 18px;
+    padding: 1.2em 2.2em 1.2em 1.4em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta .btn--lg { animation: none; }
+}

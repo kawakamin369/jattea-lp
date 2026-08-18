@@ -2466,3 +2466,14 @@ a { color: inherit; }
 
 /* ---------- FV見出し：3行目が長すぎて中途半端に折り返るのを防ぐ ---------- */
 .hero__title { font-size: clamp(25px, 4.6vw, 60px); }
+
+/* ---------- Q&Aの回答：自然に折り返す本文なので左揃え・行間を確保 ---------- */
+.qa__a--center .qa__answer {
+  max-width: 46em;
+  margin-inline: auto;
+  text-align: left;
+  line-height: 1.95;
+}
+@media (max-width: 768px) {
+  .qa__a--center .qa__answer { font-size: 15px; line-height: 1.9; }
+}

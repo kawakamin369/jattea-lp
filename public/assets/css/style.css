@@ -2414,3 +2414,11 @@ a { color: inherit; }
   font-size: 1.25em;
   letter-spacing: .01em;
 }
+
+/* ---------- 「日本茶」を斜体に（明朝に真の斜体が無いため角度を指定して傾ける） ---------- */
+.hero__title .mincho {
+  display: inline-block;
+  transform: skewX(-9deg);
+  transform-origin: 0 100%;
+  padding-right: .12em;   /* 傾けた分の右側の抜けを確保 */
+}

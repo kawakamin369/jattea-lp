@@ -2409,9 +2409,9 @@ a { color: inherit; }
 
 /* ---------- FV見出しの「日本茶」だけ太明朝＋拡大 ---------- */
 .hero__title .mincho {
-  font-family: "Yuji Syuku", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "Train One", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 400;          /* 筆書体は単一ウェイト */
-  font-size: 1.42em;         /* 筆書体は字面が小さいので大きめに */
+  font-size: 1.3em;
   letter-spacing: .04em;
 }
 
@@ -2463,3 +2463,6 @@ a { color: inherit; }
     filter: drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
   }
 }
+
+/* ---------- FV見出し：3行目が長すぎて中途半端に折り返るのを防ぐ ---------- */
+.hero__title { font-size: clamp(25px, 4.6vw, 60px); }

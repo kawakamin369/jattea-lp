@@ -2074,3 +2074,37 @@ a { color: inherit; }
   .hero__stats strong { font-size: 31px; }
   .hero__stats em     { font-size: 9.5px; }
 }
+
+/* ---------- PC：FVの3指標もスマホと同じ仕様（拡大＋ゴールドの輝き） ---------- */
+@media (min-width: 769px) {
+  .hero__stats {
+    margin-top: 38px;
+    gap: clamp(28px, 3.4vw, 56px);
+  }
+  .hero__stats strong {
+    font-size: clamp(52px, 5.6vw, 84px);
+    line-height: 1;
+    letter-spacing: -.015em;
+  }
+  .hero__stats .unit { font-size: clamp(16px, 1.5vw, 24px); }
+  .hero__stats em {
+    font-size: clamp(14px, 1.3vw, 20px);
+    margin-top: 8px;
+    color: rgba(255, 255, 255, .95);
+  }
+
+  .hero__stats strong,
+  .hero__stats .unit {
+    background-image: linear-gradient(100deg,
+      #b8974e 0%, #d8c489 18%, #fff6d9 34%, #f3e3b2 46%,
+      #d8c489 62%, #b8974e 100%);
+    background-size: 260% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, .6));
+    animation: gold-shine 5s linear infinite;
+  }
+}

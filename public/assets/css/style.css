@@ -2522,3 +2522,7 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .support li.is-key span { animation: none; transform: none; }
 }
+
+/* 2枚のキータイルが同じ拍で動くとうるさいので、位相をずらす */
+.support li.is-key:nth-of-type(7) span     { animation-delay: .55s, .85s; }
+.support li.is-key:nth-of-type(7) span.sm  { animation-delay: .55s, 1.0s; }

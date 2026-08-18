@@ -2330,3 +2330,26 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .cta .btn--lg { animation: none; }
 }
+
+/* ---------- ヘッダーCTA：ゴールドグラデーション＋輝きを流し続ける ---------- */
+.site-header .btn--pill {
+  color: #7a2609;
+  background-color: #e8d49a;
+  background-image: linear-gradient(100deg,
+    #b8974e 0%, #d8c489 16%, #fff6d9 32%, #f7ead0 44%,
+    #e0cd96 60%, #b8974e 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  box-shadow: 0 3px 0 #8f7434, 0 6px 14px rgba(0, 0, 0, .22);
+  animation: gold-shine 4s linear infinite;
+}
+.site-header .btn--pill:hover {
+  box-shadow: 0 5px 0 #8f7434, 0 10px 20px rgba(0, 0, 0, .26);
+}
+.site-header .btn--pill:active {
+  box-shadow: 0 1px 0 #8f7434, 0 3px 8px rgba(0, 0, 0, .24);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .btn--pill { animation: none; }
+}

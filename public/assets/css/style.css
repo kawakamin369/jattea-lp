@@ -2406,3 +2406,11 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .hero__stats em { animation: none; }
 }
+
+/* ---------- FV見出しの「日本茶」だけ太明朝＋拡大 ---------- */
+.hero__title .mincho {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+  font-weight: 900;
+  font-size: 1.25em;
+  letter-spacing: .01em;
+}

@@ -2190,3 +2190,13 @@ a { color: inherit; }
 /* ---------- Q&Aの設問：900は重いので少し落とす（Qの記号は太いまま） ---------- */
 .qa__q { font-weight: 700; }
 .qa__q .q { font-weight: 900; }
+
+/* ---------- 会社概要の表：項目名と内容の文字サイズを統一 ---------- */
+@media (max-width: 768px) {
+  .company__list dt,
+  .company__list dd { font-size: 13px; line-height: 1.8; }
+}
+@media (max-width: 380px) {
+  .company__list dt,
+  .company__list dd { font-size: 12px; }
+}

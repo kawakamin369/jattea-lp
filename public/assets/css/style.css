@@ -2497,3 +2497,28 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .support li.is-key span { animation: none; }
 }
+
+/* ---------- SVタイルの文字をボヨンボヨンさせる ---------- */
+.support li.is-key span {
+  display: inline-block;            /* インラインのままだと transform が効かない */
+  transform-origin: 50% 50%;
+  animation:
+    gold-shine 4.5s linear infinite,
+    boyon 1.7s ease-in-out infinite;
+}
+/* 上下の行が同時に動くと機械的なので、少しずらす */
+.support li.is-key span.sm {
+  animation-delay: 0s, .16s;
+}
+
+@keyframes boyon {
+  0%, 100% { transform: scale(1); }
+  22%      { transform: scale(1.16); }
+  42%      { transform: scale(.93); }
+  62%      { transform: scale(1.07); }
+  80%      { transform: scale(.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support li.is-key span { animation: none; transform: none; }
+}

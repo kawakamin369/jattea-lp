@@ -2156,8 +2156,8 @@ a { color: inherit; }
   .market__title { animation: none; }
 }
 
-/* ---------- 出典表記は JATTEA RED ---------- */
-.source { color: var(--orange); }
+/* ---------- 出典表記：グレー地の上なので白 ---------- */
+.source { color: rgba(255, 255, 255, .9); }
 
 /* ---------- 0次加盟タイルの数値：ゴールドの輝き＋拡大 ---------- */
 .fc__value {

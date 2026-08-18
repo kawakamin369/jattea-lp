@@ -2409,107 +2409,55 @@ a { color: inherit; }
 
 /* ---------- FV見出しの「日本茶」だけ太明朝＋拡大 ---------- */
 .hero__title .mincho {
-  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
-  font-weight: 900;
-  font-size: 1.25em;
-  letter-spacing: .01em;
+  font-family: "Yuji Boku", "Yuji Syuku", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 400;          /* 筆書体は単一ウェイト */
+  font-size: 1.42em;         /* 筆書体は字面が小さいので大きめに */
+  letter-spacing: .04em;
 }
 
 /* ---------- 「日本茶」を斜体に（明朝に真の斜体が無いため角度を指定して傾ける） ---------- */
 .hero__title .mincho {
   display: inline-block;
-  transform: skewX(-9deg);
+  transform: skewX(-5deg);   /* 筆の勢いがあるため傾きは浅めに */
   transform-origin: 0 100%;
-  padding-right: .12em;   /* 傾けた分の右側の抜けを確保 */
+  padding-right: .14em;
 }
 
-/* ---------- 「日本茶」の登場アニメーション（どーん！） ---------- */
-.hero__title .mincho {
-  position: relative;
-  transform-origin: 50% 62%;
-  animation: doon .78s cubic-bezier(.2, .9, .25, 1) .35s both;
-}
-/* 着地の瞬間に衝撃波のリングを広げる */
-.hero__title .mincho::after {
-  content: "";
-  position: absolute;
-  inset: -22% -14%;
-  border: 3px solid rgba(255, 255, 255, .8);
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-  animation: doon-ring .52s ease-out .74s both;
-}
-/* 着地に合わせて見出し全体を軽く揺らす */
-.hero__title {
-  animation: doon-shake .36s ease-out .8s both;
-}
-
-@keyframes doon {
-  0%   { transform: skewX(-9deg) scale(2.7); opacity: 0; filter: blur(7px); }
-  50%  { opacity: 1; }
-  58%  { transform: skewX(-9deg) scale(.9);  opacity: 1; filter: blur(0); }
-  74%  { transform: skewX(-9deg) scale(1.08); }
-  88%  { transform: skewX(-9deg) scale(.97); }
-  100% { transform: skewX(-9deg) scale(1);   filter: blur(0); }
-}
-@keyframes doon-ring {
-  0%   { transform: scale(.5);  opacity: .85; }
-  100% { transform: scale(2);   opacity: 0; }
-}
-@keyframes doon-shake {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  16%      { transform: translate3d(0, 5px, 0); }
-  36%      { transform: translate3d(-3px, -2px, 0); }
-  58%      { transform: translate3d(2px, 2px, 0); }
-  80%      { transform: translate3d(-1px, -1px, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__title,
-  .hero__title .mincho { animation: none; }
-  .hero__title .mincho { transform: skewX(-9deg); }
-  .hero__title .mincho::after { display: none; }
-}
-
-/* ---------- 「日本茶」白銀の輝き（ゆっくり）＋銀色のドロップシャドウ ----------
-   外側 .mincho は登場アニメ（transform/blur）を担当しているため、
-   塗りと発光は内側の .mincho__in に分けている                            */
+/* ---------- 「日本茶」：真っ白な文字＋白い光の明滅、筆で書かれるように登場 ----------
+   外側 .mincho は登場アニメ（clip-path）、内側 .mincho__in は塗りと発光を担当   */
 .hero__title .mincho__in {
   display: inline-block;
-  background-image: linear-gradient(100deg,
-    #8b93a0 0%, #c8d0da 14%, #f2f6fb 28%, #ffffff 36%,
-    #e6ecf4 44%, #bcc5d1 60%, #8b93a0 100%);
-  background-size: 300% 100%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation:
-    silver-shine 11s linear infinite,
-    silver-glow  5.5s ease-in-out infinite;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  animation: white-glow 6s ease-in-out infinite;
 }
 
-@keyframes silver-shine {
-  from { background-position: 0% 50%; }
-  to   { background-position: 300% 50%; }
+/* 筆で一気に書き上げるように、左から現れる */
+.hero__title .mincho {
+  animation: brush-write 1.05s cubic-bezier(.32, .72, .28, 1) .3s both;
 }
-@keyframes silver-glow {
+
+@keyframes brush-write {
+  0%   { clip-path: inset(0 100% -25% -5%); filter: blur(2.5px); }
+  55%  { filter: blur(.7px); }
+  100% { clip-path: inset(0 -8% -25% -5%); filter: blur(0); }
+}
+@keyframes white-glow {
   0%, 100% {
     filter:
-      drop-shadow(0 0 3px rgba(206, 224, 255, .30))
-      drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
+      drop-shadow(0 0 2px rgba(255, 255, 255, .22))
+      drop-shadow(0 2px 5px rgba(0, 0, 0, .55));
   }
   50% {
     filter:
-      drop-shadow(0 0 16px rgba(226, 240, 255, .85))
-      drop-shadow(0 0 34px rgba(180, 205, 245, .45))
-      drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
+      drop-shadow(0 0 6px rgba(255, 255, 255, .65))
+      drop-shadow(0 0 13px rgba(255, 255, 255, .22))
+      drop-shadow(0 2px 5px rgba(0, 0, 0, .55));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero__title .mincho { animation: none; clip-path: none; }
   .hero__title .mincho__in {
     animation: none;
     filter: drop-shadow(0 3px 12px rgba(0, 0, 0, .55));

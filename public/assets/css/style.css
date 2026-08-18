@@ -2409,7 +2409,7 @@ a { color: inherit; }
 
 /* ---------- FV見出しの「日本茶」だけ太明朝＋拡大 ---------- */
 .hero__title .mincho {
-  font-family: "Yuji Boku", "Yuji Syuku", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "Yuji Syuku", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 400;          /* 筆書体は単一ウェイト */
   font-size: 1.42em;         /* 筆書体は字面が小さいので大きめに */
   letter-spacing: .04em;

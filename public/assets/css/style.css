@@ -2234,3 +2234,34 @@ a { color: inherit; }
 
 /* ---------- CTA帯の見出し：900は重いので700に ---------- */
 .cta__head { font-weight: 700; }
+
+/* ---------- 「初期投資 2,000万円」：太さを落として拡大＋ゴールドの輝き ---------- */
+.profit__invest-main {
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 38px);
+  background-image: linear-gradient(100deg,
+    #b8974e 0%, #d8c489 18%, #fff6d9 34%, #f3e3b2 46%,
+    #d8c489 62%, #b8974e 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .45));
+  animation: gold-shine 5s linear infinite;
+}
+.profit__invest-main strong { font-weight: 900; }
+/* 補足の括弧書きは階層を分けて白のまま */
+.profit__invest-main span {
+  color: rgba(255, 255, 255, .92);
+  -webkit-text-fill-color: rgba(255, 255, 255, .92);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .profit__invest-main { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .profit__invest-main { animation: none; }
+}

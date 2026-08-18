@@ -2471,3 +2471,47 @@ a { color: inherit; }
   .hero__title .mincho { transform: skewX(-9deg); }
   .hero__title .mincho::after { display: none; }
 }
+
+/* ---------- 「日本茶」白銀の輝き（ゆっくり）＋銀色のドロップシャドウ ----------
+   外側 .mincho は登場アニメ（transform/blur）を担当しているため、
+   塗りと発光は内側の .mincho__in に分けている                            */
+.hero__title .mincho__in {
+  display: inline-block;
+  background-image: linear-gradient(100deg,
+    #8b93a0 0%, #c8d0da 14%, #f2f6fb 28%, #ffffff 36%,
+    #e6ecf4 44%, #bcc5d1 60%, #8b93a0 100%);
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation:
+    silver-shine 11s linear infinite,
+    silver-glow  5.5s ease-in-out infinite;
+}
+
+@keyframes silver-shine {
+  from { background-position: 0% 50%; }
+  to   { background-position: 300% 50%; }
+}
+@keyframes silver-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 3px rgba(206, 224, 255, .30))
+      drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 16px rgba(226, 240, 255, .85))
+      drop-shadow(0 0 34px rgba(180, 205, 245, .45))
+      drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title .mincho__in {
+    animation: none;
+    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
+  }
+}

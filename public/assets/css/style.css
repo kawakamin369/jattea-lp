@@ -23,8 +23,8 @@
   --radius:       10px;
   /* 本文・見出しは Noto Sans JP に固定（Hiragino等へのフォールバックを外す） */
   --font: "Noto Sans JP", system-ui, sans-serif;
-  /* 数字だけ別書体にしたい場合はここを差し替える */
-  --font-num: var(--font);
+  /* 数字はFutura（Mac/iOSの標準搭載）。無い環境はJost（Futura系のWebフォント）へ */
+  --font-num: Futura, "Jost", "Century Gothic", "Avenir Next", system-ui, sans-serif;
 }
 
 /* ---------- reset ---------- */
@@ -1927,4 +1927,150 @@ a { color: inherit; }
 @media (max-width: 380px) {
   .fc__value { font-size: 22px; }
   .support span { font-size: 13px; }
+}
+
+/* ---------- スマホ：フッター装飾を外し、会社概要は表組みのまま ---------- */
+@media (max-width: 768px) {
+  .site-footer__orn { display: none; }
+  .site-footer__inner { padding-inline: 20px; }
+
+  /* 2列 × 4行の表に統一（行ごとに列幅がバラつかないよう1つのgridにまとめる） */
+  .company__list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 14px;
+    margin-top: 24px;
+  }
+  .company__list > div {
+    display: contents;   /* ラッパーを透過させ、dt/dd を直接gridに乗せる */
+  }
+  .company__list dt,
+  .company__list dd {
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .18);
+  }
+  .company__list > div:last-child dt,
+  .company__list > div:last-child dd { border-bottom: none; }
+  .company__list dt {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .06em;
+    line-height: 1.9;
+    white-space: nowrap;
+  }
+  .company__list dd {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .outline__title { font-size: 22px; }
+  .legal { padding: 18px 16px; font-size: 12px; }
+  .legal h3 { font-size: 14px; }
+}
+
+@media (max-width: 380px) {
+  .company__list { column-gap: 10px; }
+  .company__list dt { font-size: 10px; }
+  .company__list dd { font-size: 12px; }
+}
+
+/* ---------- 数字はFutura系＋斜体（単位の日本語は正体のまま） ---------- */
+.hero__stats strong,
+.profit__value > span,
+.terms__value,
+.fc__value,
+.market__grid strong,
+.lead-xl .num,
+.steps__no,
+.flow__no {
+  font-style: italic;
+  letter-spacing: .01em;
+}
+/* 単位（万円・か月・％など）は日本語なので正体に戻す */
+.hero__stats .unit,
+.profit__value small,
+.terms__value small,
+.fc__value small,
+.market__num,
+.lead-xl .num-unit {
+  font-style: normal;
+}
+/* Futuraは字面が小さめなので、日本語見出しと並ぶ数字を僅かに持ち上げる */
+.hero__stats strong,
+.profit__value > span,
+.terms__value,
+.fc__value { font-size: 1.06em; }
+
+/* ---------- スマホFV：3指標を幅いっぱい＋ゴールドの輝き ---------- */
+@media (max-width: 768px) {
+  .hero__stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 6px;
+    margin-top: 26px;
+  }
+  .hero__stats li {
+    justify-items: start;
+    align-content: start;
+  }
+  .hero__stats strong { font-size: 34px; line-height: 1.05; }
+  .hero__stats .unit  { font-size: 13px; margin-left: 1px; }
+  .hero__stats em     { font-size: 11px; margin-top: 4px; color: rgba(255, 255, 255, .95); }
+
+  /* 数字と単位をゴールドのグラデーションで塗り、ハイライトを流す */
+  .hero__stats strong,
+  .hero__stats .unit {
+    background-image: linear-gradient(100deg,
+      #b8974e 0%, #d8c489 18%, #fff6d9 34%, #f3e3b2 46%,
+      #d8c489 62%, #b8974e 100%);
+    background-size: 260% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 7px rgba(0, 0, 0, .6));
+    animation: gold-shine 5s linear infinite;
+  }
+
+  /* CTA下のマイクロコピーは中央揃え */
+  .hero__micro { text-align: center; }
+}
+
+@media (max-width: 420px) {
+  .hero__stats { gap: 8px 4px; }
+  .hero__stats strong { font-size: 29px; }
+  .hero__stats .unit  { font-size: 11px; }
+  .hero__stats em     { font-size: 10px; }
+}
+
+@keyframes gold-shine {
+  from { background-position: 0% 50%; }
+  to   { background-position: 260% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__stats strong, .hero__stats .unit { animation: none; }
+}
+
+/* ---------- スマホFV：数字をさらに拡大（列幅を内容に合わせて余白を数字に回す） ---------- */
+@media (max-width: 768px) {
+  .hero__stats {
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    gap: 10px 4px;
+  }
+  .hero__stats strong { font-size: 42px; letter-spacing: -.01em; }
+  .hero__stats .unit  { font-size: 12px; }
+  .hero__stats em     { font-size: 10px; letter-spacing: -.02em; }
+}
+
+@media (max-width: 430px) {
+  .hero__stats strong { font-size: 36px; }
+  .hero__stats .unit  { font-size: 11px; }
+}
+
+@media (max-width: 380px) {
+  .hero__stats strong { font-size: 31px; }
+  .hero__stats em     { font-size: 9.5px; }
 }

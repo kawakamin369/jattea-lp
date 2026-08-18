@@ -2158,3 +2158,31 @@ a { color: inherit; }
 
 /* ---------- 出典表記は JATTEA RED ---------- */
 .source { color: var(--orange); }
+
+/* ---------- 0次加盟タイルの数値：ゴールドの輝き＋拡大 ---------- */
+.fc__value {
+  font-size: clamp(34px, 5.8vw, 76px);
+  text-shadow: none;                /* グラデーション塗りでは効かないため drop-shadow に置換 */
+  background-image: linear-gradient(100deg,
+    #b8974e 0%, #d8c489 18%, #fff6d9 34%, #f3e3b2 46%,
+    #d8c489 62%, #b8974e 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, .65));
+  animation: gold-shine 5s linear infinite;
+}
+.fc__value small { font-size: .36em; }
+
+@media (max-width: 768px) {
+  .fc__value { font-size: 32px; }
+}
+@media (max-width: 380px) {
+  .fc__value { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc__value { animation: none; }
+}

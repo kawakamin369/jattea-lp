@@ -2408,27 +2408,27 @@ a { color: inherit; }
 }
 
 /* ---------- FV見出しの「日本茶」だけ太明朝＋拡大 ---------- */
-.hero__title .mincho {
-  font-family: "Train One", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  font-weight: 400;          /* 筆書体は単一ウェイト */
-  font-size: 1.3em;
-  letter-spacing: .04em;
+/* 「日本茶」は玉ねぎ楷書「激」のアウトラインをSVG化して埋め込み
+   （フォントファイル自体は配信しない＝ライセンスの再配布禁止に抵触しない） */
+.hero__title .mincho__svg {
+  display: block;
+  height: 1.5em;
+  width: auto;
+  fill: #fff;
 }
 
 /* ---------- 「日本茶」を斜体に（明朝に真の斜体が無いため角度を指定して傾ける） ---------- */
 .hero__title .mincho {
   display: inline-block;
+  vertical-align: -.22em;
   transform: skewX(-5deg);   /* 筆の勢いがあるため傾きは浅めに */
   transform-origin: 0 100%;
-  padding-right: .14em;
+  padding-right: .1em;
 }
 
 /* ---------- 「日本茶」：真っ白な文字＋白い光の明滅、筆で書かれるように登場 ----------
-   外側 .mincho は登場アニメ（clip-path）、内側 .mincho__in は塗りと発光を担当   */
-.hero__title .mincho__in {
-  display: inline-block;
-  color: #fff;
-  -webkit-text-fill-color: #fff;
+   外側 .mincho は登場アニメ（clip-path）、内側のSVGは塗りと発光を担当         */
+.hero__title .mincho__svg {
   animation: white-glow 6s ease-in-out infinite;
 }
 
@@ -2458,9 +2458,9 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero__title .mincho { animation: none; clip-path: none; }
-  .hero__title .mincho__in {
+  .hero__title .mincho__svg {
     animation: none;
-    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, .55));
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .55));
   }
 }
 

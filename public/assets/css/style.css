@@ -2526,3 +2526,25 @@ a { color: inherit; }
 /* 2枚のキータイルが同じ拍で動くとうるさいので、位相をずらす */
 .support li.is-key:nth-of-type(7) span     { animation-delay: .55s, .85s; }
 .support li.is-key:nth-of-type(7) span.sm  { animation-delay: .55s, 1.0s; }
+
+/* ---------- 加盟条件：スマホでも必ず2列（1列に落とさない） ---------- */
+@media (max-width: 768px) {
+  .terms__grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+    margin-inline: 0;
+    gap: 8px;
+  }
+  .terms__grid li { padding: 14px 8px; }
+  .terms__label { font-size: 11px; }
+  .terms__value { font-size: 27px; }
+  .terms__value small { font-size: .34em; }
+  .terms__note  { font-size: 10px; line-height: 1.6; }
+}
+
+@media (max-width: 380px) {
+  .terms__grid { gap: 6px; }
+  .terms__value { font-size: 23px; }
+  .terms__label { font-size: 10px; }
+  .terms__note  { font-size: 9.5px; }
+}

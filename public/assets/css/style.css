@@ -2422,3 +2422,52 @@ a { color: inherit; }
   transform-origin: 0 100%;
   padding-right: .12em;   /* 傾けた分の右側の抜けを確保 */
 }
+
+/* ---------- 「日本茶」の登場アニメーション（どーん！） ---------- */
+.hero__title .mincho {
+  position: relative;
+  transform-origin: 50% 62%;
+  animation: doon .78s cubic-bezier(.2, .9, .25, 1) .35s both;
+}
+/* 着地の瞬間に衝撃波のリングを広げる */
+.hero__title .mincho::after {
+  content: "";
+  position: absolute;
+  inset: -22% -14%;
+  border: 3px solid rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: doon-ring .52s ease-out .74s both;
+}
+/* 着地に合わせて見出し全体を軽く揺らす */
+.hero__title {
+  animation: doon-shake .36s ease-out .8s both;
+}
+
+@keyframes doon {
+  0%   { transform: skewX(-9deg) scale(2.7); opacity: 0; filter: blur(7px); }
+  50%  { opacity: 1; }
+  58%  { transform: skewX(-9deg) scale(.9);  opacity: 1; filter: blur(0); }
+  74%  { transform: skewX(-9deg) scale(1.08); }
+  88%  { transform: skewX(-9deg) scale(.97); }
+  100% { transform: skewX(-9deg) scale(1);   filter: blur(0); }
+}
+@keyframes doon-ring {
+  0%   { transform: scale(.5);  opacity: .85; }
+  100% { transform: scale(2);   opacity: 0; }
+}
+@keyframes doon-shake {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  16%      { transform: translate3d(0, 5px, 0); }
+  36%      { transform: translate3d(-3px, -2px, 0); }
+  58%      { transform: translate3d(2px, 2px, 0); }
+  80%      { transform: translate3d(-1px, -1px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title,
+  .hero__title .mincho { animation: none; }
+  .hero__title .mincho { transform: skewX(-9deg); }
+  .hero__title .mincho::after { display: none; }
+}

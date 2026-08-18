@@ -2200,3 +2200,34 @@ a { color: inherit; }
   .company__list dt,
   .company__list dd { font-size: 12px; }
 }
+
+/* ---------- サポート見出し：太さを落として拡大＋ゴールドの輝き ---------- */
+.support-sec .sec-title {
+  font-weight: 700;
+  font-size: clamp(23px, 3.2vw, 42px);
+  line-height: 1.5;
+  background-image: linear-gradient(100deg,
+    #b8974e 0%, #d8c489 18%, #fff6d9 34%, #f3e3b2 46%,
+    #d8c489 62%, #b8974e 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .5));
+  animation: gold-shine 5s linear infinite;
+}
+/* 見出し内の強調は色指定を外してグラデーションを通す */
+.support-sec .sec-title .hl {
+  color: inherit;
+  -webkit-text-fill-color: inherit;
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .support-sec .sec-title { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .support-sec .sec-title { animation: none; }
+}

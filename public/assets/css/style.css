@@ -2362,3 +2362,19 @@ a { color: inherit; }
 @media (max-width: 768px) {
   .hero__micro { max-width: 100%; }   /* スマホはボタンが全幅 */
 }
+
+/* ---------- FVの3指標：ラベルを各ブロックの中央に、少し大きく ---------- */
+.hero__stats li { justify-items: center; }
+.hero__stats em {
+  text-align: center;
+  justify-self: center;
+  font-size: clamp(15px, 1.5vw, 23px);
+}
+
+@media (max-width: 768px) {
+  .hero__stats li { justify-items: center; }
+  .hero__stats em { font-size: 12px; }
+}
+@media (max-width: 380px) {
+  .hero__stats em { font-size: 10.5px; }
+}

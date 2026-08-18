@@ -2186,3 +2186,7 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .fc__value { animation: none; }
 }
+
+/* ---------- Q&Aの設問：900は重いので少し落とす（Qの記号は太いまま） ---------- */
+.qa__q { font-weight: 700; }
+.qa__q .q { font-weight: 900; }

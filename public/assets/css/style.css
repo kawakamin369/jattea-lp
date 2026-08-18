@@ -2127,3 +2127,12 @@ a { color: inherit; }
 
 /* ---------- FV見出し：900だと重いので少しだけ落とす ---------- */
 .hero__title { font-weight: 800; }
+
+/* ---------- スマホ：中国茶ブーム写真の枠を外す ---------- */
+@media (max-width: 768px) {
+  .issue__photo { margin-top: 26px; }
+  .issue__photo img {
+    border: none;
+    aspect-ratio: 16 / 10;   /* 2:1 は横長すぎて被写体が切れるため */
+  }
+}

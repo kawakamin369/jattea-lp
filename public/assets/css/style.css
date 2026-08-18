@@ -2378,3 +2378,31 @@ a { color: inherit; }
 @media (max-width: 380px) {
   .hero__stats em { font-size: 10.5px; }
 }
+
+/* ---------- FVの3指標：ラベルを数字の上に置き、ゴールドの輝きに ---------- */
+.hero__stats em {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  margin-top: 0;
+  margin-bottom: 6px;
+  background-image: linear-gradient(100deg,
+    #b8974e 0%, #d8c489 18%, #fff6d9 34%, #f3e3b2 46%,
+    #d8c489 62%, #b8974e 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .6));
+  animation: gold-shine 5s linear infinite;
+}
+.hero__stats strong,
+.hero__stats .unit { grid-row: 2; }
+
+@media (max-width: 768px) {
+  .hero__stats em { margin-bottom: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__stats em { animation: none; }
+}

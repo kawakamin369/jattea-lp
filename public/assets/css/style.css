@@ -2353,3 +2353,12 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .site-header .btn--pill { animation: none; }
 }
+
+/* ---------- FVのマイクロコピーをボタン幅に合わせて中央寄せ ---------- */
+.hero__micro {
+  max-width: 420px;      /* .hero__cta .btn と同じ幅に揃える */
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .hero__micro { max-width: 100%; }   /* スマホはボタンが全幅 */
+}
